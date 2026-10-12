@@ -1,0 +1,21 @@
+{
+  "name": "aurora-stay-qna",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [
+    7860,
+    8501
+  ],
+  "portsAttributes": {
+    "7860": {
+      "label": "Backend (Flask)",
+      "visibility": "public"
+    },
+    "8501": {
+      "label": "Frontend (Streamlit)",
+      "visibility": "public"
+    }
+  },
+  "postCreateCommand": "until docker info >/dev/null 2>&1; do echo 'Waiting for Docker daemon...'; sleep 1; done; docker compose up -d --build"
+}
